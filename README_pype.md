@@ -1,111 +1,89 @@
-# CodeAnalyzer 🔍 | AI-Powered Code Security Analysis
+## PyPI README.md
 
-[![PyPI Version](https://img.shields.io/pypi/v/code-analyzer-b.svg)](https://pypi.org/project/code-analyzer-b/)
-[![Python Versions](https://img.shields.io/pypi/pyversions/code-analyzer-b.svg)](https://pypi.org/project/code-analyzer-b/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
-[![SARIF Support](https://img.shields.io/badge/SARIF-2.1.0-green.svg)](https://docs.github.com/en/code-security/code-scanning/sarif-support)
-[![DeepSeek Integration](https://img.shields.io/badge/DeepSeek-API-7c3aed.svg)](https://deepseek.com)
+This version is concise and designed to help users quickly install and start using the tool from PyPI.
 
-**Enterprise-grade static code analysis with AI-powered vulnerability detection and SARIF export**
+# Code Analyzer
 
-```bash
-pip install code-analyzer-b==0.1.6
-```
+**Code Analyzer** is a powerful command-line tool for analyzing code repositories for security vulnerabilities and bugs. It leverages the DeepSeek API to provide AI-powered insights into your codebase, helping you identify and address potential issues efficiently.
 
-## 🚀 Features
-
-- **AI-Powered Analysis** - DeepSeek integration for intelligent vulnerability detection
-- **Multi-Format Reports** - SARIF, HTML, JSON, Markdown, and plaintext outputs
-- **CI/CD Ready** - Seamless integration with GitHub Actions, GitLab CI, and Jenkins
-- **Enterprise Security** - CWE tracking, OWASP Top 10 mapping, GDPR compliance
-- **Performance Optimized** - Analyze 100+ files/minute with minimal resource usage
-
-## 📦 Quick Start
-
-### 1. Installation
-```bash
-pip install code-analyzer-b
-```
-
-### 2. Configuration
-```bash
-code_analyzer setup
-🔑 Enter your DeepSeek API key: sk-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-```
-
-### 3. Analyze Repository
-```bash
-code_analyzer analyze https://github.com/your/repo --output report.html
-```
-
-## 🛠️ Advanced Usage
-
-### GitHub Integration
-```bash
-code_analyzer analyze . \
-  --format sarif \
-  --git-token $GITHUB_TOKEN \
-  --output results.sarif
-```
-
-### CI/CD Pipeline Example
-```yaml
-- name: Run Security Scan
-  uses: code-analyzer/action@v1
-  with:
-    output_format: 'sarif'
-    output_file: 'analysis.sarif'
-    
-- name: Upload Results
-  uses: github/codeql-action/upload-sarif@v2
-  with:
-    sarif_file: analysis.sarif
-```
-
-## 📊 Supported Formats
-
-| Format       | Command Flag         | CI/CD Integration | Example Use Case          |
-|--------------|----------------------|-------------------|---------------------------|
-| SARIF 2.1.0  | `--format sarif`     | GitHub CodeQL     | Enterprise security pipelines |
-| HTML         | `--format html`      | Reports           | Developer summaries       |
-| JSON         | `--format json`      | API Integration   | Custom tooling            |
-| Markdown     | `--format md`        | Documentation     | Project wikis             |
-| Plaintext    | `--format txt`       | Quick Checks      | Terminal review           |
-
-## 🔒 Security Standards
-
-- SARIF 2.1.0 Compliance
-- CWE 2023 Taxonomy
-- OWASP ASVS 4.0.3 Alignment
-- MITRE ATT&CK Framework Mapping
-
-
-## 📈 Performance Metrics (v0.1.5)
-
-| Metric               | Value          | Improvement |
-|----------------------|----------------|-------------|
-| Analysis Speed       | 120 files/min  | +15%        |
-| Vulnerability Detection | 92% accuracy | +8%         |
-| Memory Footprint     | <500MB        | -30%        |
-| Supported Languages  | 15+           | +5          |
-
-
-## 💡 Pro Tips
-
-```bash
-# Analyze private repository
-code_analyzer analyze https://github.com/private/repo --git-token=ghp_xxxx
-
-# Generate multiple report formats
-code_analyzer analyze . --output report.html --format json
-```
-
-## 📧 Support
-
-- 🚨 [Open an Issue](https://github.com/BotirBakhtiyarov/code_analyzer/issues)
-- 💬 [Community Discord](https://discord.gg/e63MyDs8)
-- 📱  [Telegram Channel](https://t.me/opensource_uz) 
-- 📩 botirbakhtiyarov@gmail.com
+**Version**: 0.2.0
 
 ---
-*Empowering secure development at scale since 2024*
+
+## Installation
+
+To install Code Analyzer version 0.2.0, use pip:
+
+```bash
+pip install code-analyzer==0.2.0
+```
+
+After installation, set up your DeepSeek API key:
+
+```bash
+code_analyzer setup
+```
+
+Follow the prompts to enter your API key. You can obtain a key from [DeepSeek](https://www.deepseek.com/).
+
+---
+
+## Usage
+
+### Analyzing a GitHub Repository
+
+To analyze a public GitHub repository:
+
+```bash
+code_analyzer analyze https://github.com/user/repo
+```
+
+For private repositories, use the `--git-token` option with a GitHub access token:
+
+```bash
+code_analyzer analyze https://github.com/user/private-repo --git-token YOUR_TOKEN
+```
+
+### Analyzing a Local Directory
+
+To analyze a local directory:
+
+```bash
+code_analyzer analyze /path/to/local/repo
+```
+
+Or, to analyze the current directory:
+
+```bash
+code_analyzer analyze .
+```
+
+### Options
+
+- `-o, --output FILE`: Save the report to a file (supports `.txt`, `.md`, `.html`, `.json`, `.sarif`).
+- `-f, --format FORMAT`: Specify the output format (`txt`, `md`, `html`, `json`, `sarif`).
+- `--verbose`: Enable detailed output for debugging.
+- `--no-details`: Exclude detailed findings from the report.
+- `--lang LANG`: Set the report language (`en`, `uz`, `zh`, `ru`).
+- `--no-stream`: Suppress console output and save directly to the output file.
+
+Example with options:
+
+```bash
+code_analyzer analyze . --output report.sarif --format sarif --no-stream --lang uz
+```
+
+---
+
+## Features
+
+- **AI-Powered Analysis**: Utilizes DeepSeek's API for intelligent code analysis.
+- **Multi-Language Support**: Reports available in English, Uzbek, Chinese, and Russian.
+- **CI/CD Integration**: Easily integrates with GitHub Actions for automated code scanning.
+- **Flexible Output**: Supports multiple report formats, including SARIF for GitHub code scanning.
+- **Local and Remote Analysis**: Analyze both local directories and remote GitHub repositories.
+
+---
+
+For more information, visit the [GitHub repository](https://github.com/BotirBakhtiyarov/code_analyzer-b).
+

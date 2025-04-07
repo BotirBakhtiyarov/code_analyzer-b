@@ -5,13 +5,13 @@ with open("README_pype.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="code-analyzer-b",
-    version="0.1.6",
+    version="0.2.0",
     author="Botir Bakhtiyarov",
     author_email="botirbakhtiyarovb@gmail.com",
     description="AI-powered code vulnerability scanner for GitHub repositories",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/BotirBakhtiyarov/code_analyzer",
+    url="https://github.com/BotirBakhtiyarov/code_analyzer-b",
     packages=find_packages(exclude=["tests", "tests.*"]),
     install_requires=[
         'requests>=2.31.0',
@@ -28,6 +28,6 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires='>=3.8',
+    python_requires='>=3.6',
     include_package_data=True,
 )
