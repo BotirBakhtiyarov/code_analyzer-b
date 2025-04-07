@@ -2,16 +2,16 @@
 
 **Code Analyzer** is a powerful command-line tool for analyzing code repositories for security vulnerabilities and bugs. It leverages the DeepSeek API to provide AI-powered insights into your codebase, helping you identify and address potential issues efficiently.
 
-**Version**: 0.2.0
+**Version**: 0.2.x
 
 ---
 
 ## Installation
 
-To install Code Analyzer version 0.2.1, use pip:
+To install Code Analyzer version 0.2.x, use pip:
 
 ```bash
-pip install code-analyzer==0.2.1
+pip install code-analyzer==0.2.x
 ```
 
 After installation, set up your DeepSeek API key:
