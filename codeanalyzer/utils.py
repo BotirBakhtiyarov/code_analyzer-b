@@ -8,7 +8,7 @@ import json
 from codeanalyzer.config import Config
 from . import __version__
 
-# Translation dictionary
+# Translation dictionary (unchanged)
 translations = {
     'en': {
         'summary_title': 'Security Analysis Summary',
@@ -21,6 +21,17 @@ translations = {
         'file': 'File',
         'findings': 'Findings'
     },
+    'uz': {  # Example Uzbek translations; replace with accurate ones
+        'summary_title': 'Xavfsizlik Tahlili Xulosa',
+        'critical_issues': 'Kritik Muammolar',
+        'warnings': 'Ogohlantirishlar',
+        'files_processed': 'Ishlov Berilgan Fayllar',
+        'no_issues': 'Muhim muammolar topilmadi',
+        'ai_analysis': 'AI Tahlili',
+        'detailed_findings': 'Batafsil Topilmalar',
+        'file': 'Fayl',
+        'findings': 'Topilmalar'
+    },
     'zh': {
         'summary_title': '安全分析摘要',
         'critical_issues': '严重问题',
@@ -32,32 +43,25 @@ translations = {
         'file': '文件',
         'findings': '发现'
     },
-    'uz': {  # Placeholder; replace with actual translations
-        'summary_title': 'Security Analysis Summary (Uzbek)',
-        'critical_issues': 'Critical Issues (Uzbek)',
-        'warnings': 'Warnings (Uzbek)',
-        'files_processed': 'Files Processed (Uzbek)',
-        'no_issues': 'No significant issues found (Uzbek)',
-        'ai_analysis': 'AI Analysis (Uzbek)',
-        'detailed_findings': 'Detailed Findings (Uzbek)',
-        'file': 'File (Uzbek)',
-        'findings': 'Findings (Uzbek)'
-    },
-    'ru': {  # Placeholder; replace with actual translations
-        'summary_title': 'Security Analysis Summary (Russian)',
-        'critical_issues': 'Critical Issues (Russian)',
-        'warnings': 'Warnings (Russian)',
-        'files_processed': 'Files Processed (Russian)',
-        'no_issues': 'No significant issues found (Russian)',
-        'ai_analysis': 'AI Analysis (Russian)',
-        'detailed_findings': 'Detailed Findings (Russian)',
-        'file': 'File (Russian)',
-        'findings': 'Findings (Russian)'
+    'ru': {  # Example Russian translations; replace with accurate ones
+        'summary_title': 'Сводка анализа безопасности',
+        'critical_issues': 'Критические проблемы',
+        'warnings': 'Предупреждения',
+        'files_processed': 'Обработанные файлы',
+        'no_issues': 'Серьезных проблем не обнаружено',
+        'ai_analysis': 'Анализ ИИ',
+        'detailed_findings': 'Подробные находки',
+        'file': 'Файл',
+        'findings': 'Находки'
     }
 }
 
 def get_translation(lang, key):
     return translations.get(lang, translations['en']).get(key, key)
+
+def is_local_path(path):
+    """Check if the input is a local path rather than a URL."""
+    return os.path.exists(path) or path == '.' or path.startswith('./') or path.startswith('../') or os.path.isabs(path)
 
 def download_repo(github_url, git_token=None):
     temp_dir = tempfile.mkdtemp(prefix="code_analyzer_")
@@ -99,7 +103,6 @@ def download_repo(github_url, git_token=None):
     extracted_dir = os.path.join(temp_dir, os.listdir(temp_dir)[0])
     return extracted_dir
 
-
 def scan_files(directory):
     file_list = []
     for root, _, files in os.walk(directory):
@@ -112,11 +115,9 @@ def scan_files(directory):
                 file_list.append(file_path)
     return file_list
 
-
 def read_file(file_path):
     with open(file_path, 'r', encoding='utf-8', errors='ignore') as f:
         return f.read()
-
 
 def write_report(report, filename, format=None, lang='en'):
     if format:
@@ -136,7 +137,6 @@ def write_report(report, filename, format=None, lang='en'):
         _write_sarif_report(report, filename, lang)
     else:
         raise ValueError(f"Unsupported file format: {file_ext}")
-
 
 def _write_txt_report(report, filename, lang):
     content = [
@@ -189,7 +189,6 @@ def _write_html_report(report, filename, lang):
     with open(filename, 'w', encoding='utf-8') as f:
         f.write(html)
 
-
 def _write_json_report(report, filename, lang):
     report_data = {
         "summary": report['summary'],
@@ -213,7 +212,6 @@ def _detect_severity(text):
     elif 'medium' in text:
         return "medium"
     return "low"
-
 
 def _write_markdown_report(report, filename, lang):
     content = [
