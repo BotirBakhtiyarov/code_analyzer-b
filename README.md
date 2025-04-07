@@ -141,7 +141,7 @@ jobs:
 
     - name: Run code analysis
       run: |
-        code_analyzer analyze . --output report.sarif --format sarif --no-stream --lang uz
+        code_analyzer analyze . --output report.sarif --format sarif --no-stream --lang en
 
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v3
