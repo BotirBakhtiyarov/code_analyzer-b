@@ -129,7 +129,7 @@ jobs:
         python-version: '3.x'
 
     - name: Install code-analyzer
-      run: pip install code-analyzer-b==0.2.0
+      run: pip install code-analyzer-b
 
     - name: Set up DeepSeek API key
       env:
@@ -141,7 +141,7 @@ jobs:
 
     - name: Run code analysis
       run: |
-        code_analyzer analyze . --output report.sarif --format sarif --no-stream --lang uz
+        code_analyzer analyze . --output report.sarif --format sarif --no-stream --lang en
 
     - name: Upload SARIF file
       uses: github/codeql-action/upload-sarif@v3
