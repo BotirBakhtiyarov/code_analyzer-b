@@ -5,29 +5,31 @@ with open("README_pype.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="code-analyzer-b",
-    version="0.2.0",
+    version="0.2.1",
     author="Botir Bakhtiyarov",
     author_email="botirbakhtiyarovb@gmail.com",
-    description="AI-powered code vulnerability scanner for GitHub repositories",
+    description="A tool to analyze code repositories for security vulnerabilities using DeepSeek AI",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/BotirBakhtiyarov/code_analyzer-b",
-    packages=find_packages(exclude=["tests", "tests.*"]),
+    packages=find_packages(),
+    include_package_data=True,
     install_requires=[
-        'requests>=2.31.0',
-        'tqdm>=4.66.1',
-        'pygments>=2.17.2'
+        "requests",
+        "tqdm",
     ],
     entry_points={
-        'console_scripts': [
-            'code_analyzer=codeanalyzer.app:main'
-        ]
+        "console_scripts": [
+            "code_analyzer = codeanalyzer.cli:main",
+        ],
     },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "Topic :: Software Development :: Quality Assurance",
     ],
-    python_requires='>=3.6',
-    include_package_data=True,
+    python_requires=">=3.6",
 )

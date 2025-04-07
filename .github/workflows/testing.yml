@@ -1,0 +1,45 @@
+name: Code Analysis
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    permissions:
+      security-events: write
+      actions: read
+      contents: read
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Install code-analyzer
+      run: pip install code-analyzer-b
+
+    - name: Set up DeepSeek API key
+      env:
+        DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+      run: |
+        mkdir -p ~/.code_analyzer
+        echo "[DEEPSEEK]" > ~/.code_analyzer/config.ini
+        echo "API_KEY = $DEEPSEEK_API_KEY" >> ~/.code_analyzer/config.ini
+
+    - name: Run code analysis
+      run: |
+        code_analyzer analyze . --output report.sarif --format sarif --no-stream --lang en
+
+    - name: Upload SARIF file
+      uses: github/codeql-action/upload-sarif@v3
+      with:
+        sarif_file: report.sarif
