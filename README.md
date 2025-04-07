@@ -129,7 +129,7 @@ jobs:
         python-version: '3.x'
 
     - name: Install code-analyzer
-      run: pip install code-analyzer==0.2.0
+      run: pip install code-analyzer-b==0.2.0
 
     - name: Set up DeepSeek API key
       env:
