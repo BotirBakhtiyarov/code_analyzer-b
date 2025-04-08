@@ -1,0 +1,137 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Xavfsizlik Tahlili Xulosa</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 40px; }
+            .finding { margin-bottom: 30px; border-left: 4px solid #007bff; padding-left: 15px; }
+            pre { background: #f8f9fa; padding: 15px; border-radius: 4px; }
+            h1 { color: #2c3e50; }
+            h2 { color: #34495e; }
+        </style>
+    </head>
+    <body>
+        <h1>Xavfsizlik Tahlili Xulosa</h1>
+        <h2>Summary</h2>
+        <pre>Xavfsizlik Tahlili Xulosa:
+• Kritik Muammolar: 0
+• Ogohlantirishlar: 0
+• Ishlov Berilgan Fayllar: 2/2
+
+AI Tahlili:
+**Xavfsizlik hisoboti**
+
+**1. Asosiy xavfsizlik muammolari:**
+
+- **API kalitlari himoyasizligi**:
+  - OpenAI API kaliti `.env` fayldan validatsiyasiz olinmoqda, bu esa noto‘g‘ri kalit kiritilganda dastur ishlamasligiga olib keladi.
+
+- **Prompt injection xavfi**:
+  - Foydalanuvchi kiritgan so‘rov (`query`) to‘g‘ridan-to‘g‘ri promptga kiritilmoqda, bu esa model ishini buzishi mumkin.
+
+- **URL va ma’lumotlarni tekshirish yo‘qligi**:
+  - YouTube URL manzillari va foydalanuvchi kiritgan ma’lumotlar hech qanday tekshiruvsiz qabul qilinmoqda, bu esa SQL inyeksiyasi yoki zararli URL orqali hujumga olib kelishi mumkin.
+
+- **Xatoliklarni boshqarmaslik**:
+  - YouTube transkriptini yuklash, OpenAI API bilan aloqa qilish va boshqa funksiyalarda xatoliklar boshqarilmayapti, bu esa dastur ishdan chiqishiga olib kelishi mumkin.
+
+**2. Samaradorlik muammolari:**
+
+- **FAISS indeksini saqlamaslik**:
+  - Har safar funksiya chaqirilganda yangi vektorlar bazasi yaratilmoqda, bu esa samaradorlikni pasaytiradi.
+
+- **Chunk o‘lchami optimallashtirilmagan**:
+  - 1000 belgili chunk o‘lchami barcha transkriptlar uchun optimal bo‘lmasligi mumkin.
+
+**3. Boshqa kamchiliklar:**
+
+- **Model tanasi**:
+  - OpenAI modeli (`gpt-3.5-turbo-instruct`) qattiq kodlangan, bu esa kelajakda o‘zgartirishni qiyinlashtiradi.
+
+- **Foydalanuvchi kiritish chegaralari**:
+  - `max_chars=50` chegarasi juda kichik, bu esa foydalanuvchi tajribasini buzishi mumkin.
+
+- **Tashqi modul xavfsizligi**:
+  - `langchain_helper` moduli tashqi manbadan kelganligi va uning xavfsizligi tekshirilmaganligi xavfli.
+
+**Tavsiya etilgan yechimlar:**
+
+- **API kalitini validatsiya qiling**:
+  - `.env` fayldan olingan API kalitini tekshirish va noto‘g‘ri kalit kiritilganda xatolikni ko‘rsatish.
+
+- **Ma’lumotlarni tozalash va tekshirish**:
+  - Foydalanuvchi kiritgan so‘rov (`query`) va YouTube URL manzillarini maxsus belgilar va zararli kodlardan tozalash.
+
+- **Xatoliklarni boshqarish mexanizmini qo‘shing**:
+  - `try-except` bloklari yordamida xatoliklarni qayta ishlash va foydalanuvchiga tushuntirish xabarlarini ko‘rsatish.
+
+- **Model nomini konfiguratsiya fayliga ko‘chiring**:
+  - Model nomini qattiq kodlash o‘rniga konfiguratsiya fayliga joylashtirish.
+
+- **FAISS indeksini saqlash mexanizmini qo‘shing**:
+  - Har safar yangi indeks yaratish o‘rniga mavjud indeksni saqlash va qayta ishlatish.
+
+- **Input chegaralarini oqlash**:
+  - `max_chars` chegarasini foydalanuvchi tajribasini yaxshilash uchun oqlash.
+
+- **Tashqi modullarni tekshirish**:
+  - `langchain_helper` kabi tashqi modullarni xavfsizlik nuqtai nazaridan tekshirish va zararsizligiga ishonch hosil qilish.
+
+**Xulosa:**
+
+Ushbu kodda bir qator jiddiy xavfsizlik muammolari va samaradorlik kamchiliklari mavjud. Yuqorida keltirilgan tavsiyalar asosida kodni yaxshilash va xavfsizlikni oshirish mumkin. Ayniqsa, API kalitlarini himoya qilish, ma’lumotlarni tozalash va xatoliklarni boshqarish kabi choralarni birinchi navbatda amalga oshirish tavsiya etiladi.</pre>
+        <h2>Batafsil Topilmalar</h2>
+        <div class="finding">
+            <h3>Fayl: C:\Users\nick\AppData\Local\Temp\code_analyzer_n_gm7qkn\youtube._assistant_langchain-main\langchain_helper.py</h3>
+            <pre>Ushbu kodda quyidagi xavfsizlik muammolari va bug'lar mavjud:
+
+1. **API kalitini himoya qilmaslik** - OpenAI API kaliti `.env` fayldan olinmoqda, lekin u hech qanday validatsiyadan o'tkazilmaydi. Noto'g'ri yoki o'chirilgan kalit kiritilsa, dastur ishlamay qoladi.
+
+2. **Xatoliklarni qayta ishlamaslik** - YouTube'dan transkript yuklash yoki OpenAI API bilan aloqa qilishda xatoliklar yuz bersa, ularni qayta ishlash uchun try-except bloklari yo'q.
+
+3. **Prompt injection xavfi** - Foydalanuvchi kiritgan `query` to'g'ridan-to'g'ri promptga kiritilmoqda. Agar foydalanuvchi maxsus belgilar yoki buyruqlar kiritilsa, modelning ishi buzilishi mumkin.
+
+4. **Model tanasi** - OpenAI modeli qattiq kodlangan (`gpt-3.5-turbo-instruct`), bu kelajakda o'zgartirishni qiyinlashtiradi.
+
+5. **FAISS indeksini saqlamaslik** - Har safar funksiya chaqirilganda yangi vektorlar bazasi yaratiladi, bu samaradorlik muammosiga olib keladi.
+
+6. **Chunk o'lchami optimallashtirilmagan** - 1000 belgili chunk o'lchami barcha transkriptlar uchun optimal bo'lmasligi mumkin.
+
+Tavsiya etilgan yechimlar:
+- API kalitini validatsiya qiling
+- Xatoliklarni qayta ishlash uchun try-except qo'shing
+- Foydalanuvchi kiritgan ma'lumotlarni sanitize qiling
+- Model nomini konfiguratsiya fayliga ko'chiring
+- FAISS indeksini saqlash va qayta ishlatish mexanizmini qo'shing</pre>
+        </div>
+        
+        <div class="finding">
+            <h3>Fayl: C:\Users\nick\AppData\Local\Temp\code_analyzer_n_gm7qkn\youtube._assistant_langchain-main\main.py</h3>
+            <pre>Kodni tahlil qilish natijasida quyidagi xavfsizlik muammolari va bug'lar aniqlangan:
+
+1. **URL tekshiruvsiz qabul qilinishi**:
+   - YouTube URL manzili hech qanday tekshiruvsiz qabul qilinmoqda. Bu SQL inyeksiyasi yoki zararli URL orqali hujumga yo'l qo'yishi mumkin.
+
+2. **Maxsus belgilarni filtrlamaslik**:
+   - `query` va `youtube_url` o'zgaruvchilarida maxsus belgilar (', ", ;, -- va boshqalar) filtrlanmaydi, bu SQL inyeksiyasiga olib kelishi mumkin.
+
+3. **Xatoliklarni boshqarmaslik**:
+   - `create_vector_db_from_youtube_url` va `get_response_from_query` funksiyalarida xatoliklar boshqarilmayapti. Noto'g'ri URL yoki so'rov berilganda dastur ishdan chiqishi mumkin.
+
+4. **Foydalanuvchi kiritish chegaralari**:
+   - `max_chars=50` chegarasi juda kichik, bu foydalanuvchi tajribasini buzishi mumkin.
+
+5. **Tashqi modul xavfsizligi**:
+   - `langchain_helper` moduli tashqi manbadan kelganligi va uning xavfsizligi tekshirilmaganligi xavfli.
+
+Tavsiyalar:
+- URL va so'rovlarni tekshirish va tozalash
+- Xatoliklarni boshqarish mexanizmini qo'shish
+- Input chegaralarini oqlash
+- Tashqi modullarni tekshirish</pre>
+        </div>
+        
+    </body>
+    </html>
+    

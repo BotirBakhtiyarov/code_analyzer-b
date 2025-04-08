@@ -5,7 +5,7 @@ with open("README_pype.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="code-analyzer-b",
-    version="0.2.2",
+    version="0.2.4",
     author="Botir Bakhtiyarov",
     author_email="botirbakhtiyarovb@gmail.com",
     description="A tool to analyze code repositories for security vulnerabilities using DeepSeek AI",
