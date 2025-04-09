@@ -1,3 +1,9 @@
+[![PyPI Version](https://img.shields.io/pypi/v/code-analyzer-b.svg)](https://pypi.org/project/code-analyzer-b/)
+[![Python Versions](https://img.shields.io/pypi/pyversions/code-analyzer-b.svg)](https://pypi.org/project/code-analyzer-b/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![SARIF Support](https://img.shields.io/badge/SARIF-2.1.0-green.svg)](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning)
+[![DeepSeek Integration](https://img.shields.io/badge/DeepSeek-API-7c3aed.svg)](https://deepseek.com)
+[![Socket Badge](https://socket.dev/api/badge/pypi/package/code-analyzer-b/0.2.4?artifact_id=tar-gz)](https://socket.dev/pypi/package/code-analyzer-b/overview/0.2.4/tar-gz)
 ```
    ██████╗ ██████╗ ██████╗ ███████╗    █████╗ ███╗   ██╗ █████╗ ██╗   ██╗   ██╗ ███████╗███████╗██████╗ 
   ██╔════╝██╔═══██╗██╔══██╗██╔════╝   ██╔══██╗████╗  ██║██╔══██╗██║   ╚██╗ ██╔╝ ╚══███╔╝██╔════╝██╔══██╗
