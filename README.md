@@ -23,11 +23,11 @@
 
 ## 📋 Table of Contents
 
-- 📦 [Installation](#installation)
-- 🕵️ [Usage](#usage)
-- ⚙️ [CI/CD Integration](#cicd-integration)
-- 🤝 [Contributing](#contributing)
-- ⚖️ [License](#license)
+- 📦 [Installation](##installation)
+- 🕵️ [Usage](##usage)
+- ⚙️ [CI/CD Integration](##cicd-integration)
+- 🤝 [Contributing](##contributing)
+- ⚖️ [License](##license)
 
 ---
 
