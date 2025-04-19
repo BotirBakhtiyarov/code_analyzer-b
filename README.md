@@ -21,6 +21,12 @@
 
 ---
 
+## 🌟 Support This Project 🌟
+You can support this project by becoming a sponsor on GitHub!
+[Become a Sponsor](https://github.com/sponsorships/BotirBakhtiyarov)
+
+---
+
 ## 📋 Table of Contents
 
 - 📦 [Installation](##installation)
